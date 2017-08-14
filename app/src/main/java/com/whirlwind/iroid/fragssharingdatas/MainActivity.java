@@ -27,11 +27,14 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
 
     private void launchFragment(Fragment fragObj) {
 
-        if(fragObj instanceof FirstFragment){
+     /*
+       SIR's code; AM COMMENTING.....
+       if(fragObj instanceof FirstFragment){
             fragObj =  FirstFragment.newInstance();
         }else{
             fragObj = SecondFragment.newInstance();
-        }
+        }*/
+
 
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
