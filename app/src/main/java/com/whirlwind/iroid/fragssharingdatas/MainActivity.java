@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
 
     private void launchFragment(Fragment fragObj) {
 
-        if(fragObj instanceof SecondFragment){
+        if(fragObj instanceof FirstFragment){
             fragObj =  FirstFragment.newInstance();
         }else{
             fragObj = SecondFragment.newInstance();

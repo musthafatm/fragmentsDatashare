@@ -85,14 +85,15 @@ public class SecondFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_second, container, false);
         mtv2 = (TextView) view.findViewById(R.id.tv2);
 
+        mListener.changeTitle("Second Fragment");
+
       view.findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-              mListener.replaceFragment(SecondFragment.this);
+              mListener.replaceFragment(FirstFragment.newInstance());
           }
       });
 
-        mListener.changeTitle("Second Fragment");
 
         //Actually like this: updateTextField(userData1);             But '   userData1  '   needs to be accessed here.
 
@@ -102,10 +103,10 @@ public class SecondFragment extends Fragment {
 
 //##################################################***********
 
-    public void updateTextField(String newText){
+ /*   public void updateTextField(String newText){
 
         mtv2.setText(newText);
-    }
+    }*/
 
 
 

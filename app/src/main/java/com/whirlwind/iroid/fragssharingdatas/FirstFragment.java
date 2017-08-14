@@ -98,7 +98,7 @@ public class FirstFragment extends Fragment {
             public void onClick(View v) {
 
 
-                mListener.replaceFragment(FirstFragment.this);
+                mListener.replaceFragment(SecondFragment.newInstance());
 
 //                if(met1.getText().toString().equals("")){
 //                    Toast.makeText(getActivity(), "User input value must be filled", Toast.LENGTH_LONG).show();
