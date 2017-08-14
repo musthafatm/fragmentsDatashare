@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">FragsSharingDatas</string>
+
+    <string name="hai">HAI</string>
+    <string name="button1">BUTTON 1</string>
+    <string name="hello">Hello</string>
+    <string name="button2">BUTTON 2</string>
+
+</resources>
