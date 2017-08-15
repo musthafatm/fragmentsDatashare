@@ -1,6 +1,6 @@
 package com.whirlwind.iroid.fragssharingdatas;
 
-import android.net.Uri;
+
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -11,8 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import static com.whirlwind.iroid.fragssharingdatas.FirstFragment.mParam1;
-import static com.whirlwind.iroid.fragssharingdatas.FirstFragment.met1;
+
 
 public class MainActivity extends AppCompatActivity implements OnFragmentInteractionListener {
 
@@ -80,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
     public void readText() {
 
        // met1 = (EditText)findViewById(R.id.et1);
-        mParam1 =met1.getText().toString();
+      //  mParam1 =met1.getText().toString();
 
     }
 

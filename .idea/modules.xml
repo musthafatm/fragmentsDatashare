@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/FragsSharingDatas.iml" filepath="$PROJECT_DIR$/FragsSharingDatas.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/fragmentsDatashare.iml" filepath="$PROJECT_DIR$/fragmentsDatashare.iml" />
     </modules>
   </component>

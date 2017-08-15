@@ -12,10 +12,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+
+
 public class SecondFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
+   // private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
 
@@ -27,7 +29,7 @@ public class SecondFragment extends Fragment {
 
     public static TextView mtv2;
 
-    private EditText mValueEditText;
+    private EditText met2;
 
 
     private OnFragmentInteractionListener mListener;
@@ -74,14 +76,15 @@ public class SecondFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_second, container, false);
-        value1 = getArguments().getString("FIRST_PARAM", "Hello");
+       // value1 = getArguments().getString("FIRST_PARAM", "Hello");
+        value1 = getArguments().getString("FIRST_PARAM");
+
+        met2 = (EditText) view.findViewById(R.id.et2);
         mtv2 = (TextView) view.findViewById(R.id.tv2);
-
-        mValueEditText = (EditText) view.findViewById(R.id.et2);
-
 
         Toast.makeText(getActivity(), "Data:" + value1, Toast.LENGTH_LONG).show();
         mtv2.setText(value1);
+
         // mListener.replaceText(dataFromFrag1);
         mListener.changeTitle("Second Fragment");
 
@@ -90,7 +93,9 @@ public class SecondFragment extends Fragment {
             public void onClick(View v) {
                 FirstFragment firstFragment = FirstFragment.newInstance();
                 Bundle bundle = new Bundle();
-                bundle.putString("SECOND_PARAM", mValueEditText.getText().toString().length() > 0 ? mValueEditText.getText().toString() : null);
+                //******here null is passed to Second_Param : if length =0 and then default value: 'Hai' is passed to second_Param
+                // ******inside onCreateView of FirstFragment.java(This is another method)
+                bundle.putString("SECOND_PARAM", met2.getText().toString().length() > 0 ? met2.getText().toString() : null);
 
                 firstFragment.setArguments(bundle);
                 mListener.replaceFragment(firstFragment);
@@ -98,18 +103,11 @@ public class SecondFragment extends Fragment {
         });
 
 
-        //Actually like this: updateTextField(userData1);             But '   userData1  '   needs to be accessed here.
+        //Actually like this: updateTextField(userData1);    But '   userData1  '   needs to be accessed here.
 
         return view;
     }
 
-
-//##################################################***********
-
- /*   public void updateTextField(String newText){
-
-        mtv2.setText(newText);
-    }*/
 
 
     @Override

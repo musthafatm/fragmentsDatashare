@@ -16,14 +16,13 @@ import android.widget.Toast;
 public class FirstFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+ /*   private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";*/
 
 
     public static EditText met1;
 
-    private TextView mValueTextView;
-    private String userData1;
+    private TextView mtv1;
 
 
     // TODO: Rename and change types of parameters
@@ -62,10 +61,10 @@ public class FirstFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
+      /*  if (getArguments() != null) {
             // mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        }*/
     }
 
 
@@ -76,12 +75,12 @@ public class FirstFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_first, container, false);
 
         met1 = (EditText) view.findViewById(R.id.et1);
-        mValueTextView = (TextView) view.findViewById(R.id.tv1);
+        mtv1 = (TextView) view.findViewById(R.id.tv1);
 
 
-        String second_param = getArguments() != null ? getArguments().getString("SECOND_PARAM", "Hello") : "hello";
+       String value2 = getArguments() != null ? getArguments().getString("SECOND_PARAM", "Hai") : "Hai";
 
-        mValueTextView.setText(second_param);
+        mtv1.setText(value2);
         //mParam1 = met1.getText().toString();
 
         mListener.changeTitle("First Fragment");
@@ -94,9 +93,10 @@ public class FirstFragment extends Fragment {
 
                 SecondFragment secondFragment = SecondFragment.newInstance();
                 Bundle bundle = new Bundle();
-
-                bundle.putString("FIRST_PARAM", met1.getText().toString().length() > 0 ? met1.getText().toString() : null);
+                bundle.putString("FIRST_PARAM", met1.getText().toString().length() > 0 ? met1.getText().toString() : "Hello");
                 secondFragment.setArguments(bundle);
+
+
                 mListener.replaceFragment(secondFragment);
 
 //                if(met1.getText().toString().equals("")){
