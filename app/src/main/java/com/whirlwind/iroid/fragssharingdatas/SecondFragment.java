@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,10 +23,11 @@ public class SecondFragment extends Fragment {
     private String mParam2;
 
 
+    // private
 
-   // private
+    public static TextView mtv2;
 
-     public static TextView mtv2;
+    private EditText mValueEditText;
 
 
     private OnFragmentInteractionListener mListener;
@@ -38,18 +40,12 @@ public class SecondFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-
      * @return A new instance of fragment SecondFragment.
      */
     // TODO: Rename and change types and number of parameters
-
-
-
     public static SecondFragment newInstance() {
         SecondFragment fragment2 = new SecondFragment();
-        Bundle args = new Bundle();
 
-        fragment2.setArguments(args);
         return fragment2;
 
         /*
@@ -63,43 +59,43 @@ public class SecondFragment extends Fragment {
     }
 
 
-
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // if (getArguments() != null) {
-            value1 = getArguments().getString(ARG_PARAM1, "Hello");
-            //mParam2 = getArguments().getString(ARG_PARAM2);
-       // }
+        // if (getArguments() != null) {
+
+        //mParam2 = getArguments().getString(ARG_PARAM2);
+        // }
 
     }
-
-
-
-
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_second, container, false);
+        value1 = getArguments().getString("FIRST_PARAM", "Hello");
         mtv2 = (TextView) view.findViewById(R.id.tv2);
 
+        mValueEditText = (EditText) view.findViewById(R.id.et2);
 
 
-        Toast.makeText(getActivity(), "Data:" +value1, Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(), "Data:" + value1, Toast.LENGTH_LONG).show();
         mtv2.setText(value1);
-       // mListener.replaceText(dataFromFrag1);
+        // mListener.replaceText(dataFromFrag1);
         mListener.changeTitle("Second Fragment");
 
-      view.findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-              mListener.replaceFragment(FirstFragment.newInstance());
-          }
-      });
+        view.findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirstFragment firstFragment = FirstFragment.newInstance();
+                Bundle bundle = new Bundle();
+                bundle.putString("SECOND_PARAM", mValueEditText.getText().toString().length() > 0 ? mValueEditText.getText().toString() : null);
+
+                firstFragment.setArguments(bundle);
+                mListener.replaceFragment(firstFragment);
+            }
+        });
 
 
         //Actually like this: updateTextField(userData1);             But '   userData1  '   needs to be accessed here.
@@ -116,13 +112,6 @@ public class SecondFragment extends Fragment {
     }*/
 
 
-
-
-
-
-
-
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -135,17 +124,11 @@ public class SecondFragment extends Fragment {
     }
 
 
-
-
-
-
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
     }
-
-
 
 
 }

@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
-
 
 
 public class FirstFragment extends Fragment {
@@ -21,8 +21,9 @@ public class FirstFragment extends Fragment {
 
 
     public static EditText met1;
-    private String userData1;
 
+    private TextView mValueTextView;
+    private String userData1;
 
 
     // TODO: Rename and change types of parameters
@@ -39,23 +40,12 @@ public class FirstFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-
      * @return A new instance of fragment FirstFragment.
      */
     // TODO: Rename and change types and number of parameters
-
-
-
     public static FirstFragment newInstance() {
-        FirstFragment fragment = new FirstFragment();
-        Bundle args = new Bundle();
 
-        //String arg1 = mListener.readText(mParam1,met1);
-//        mListener.readText();
-        args.putString(ARG_PARAM1,mParam1);
-
-        fragment.setArguments(args);
-        return fragment;
+        return new FirstFragment();
 
 
         /*
@@ -69,21 +59,14 @@ public class FirstFragment extends Fragment {
     }
 
 
-
-
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-           // mParam1 = getArguments().getString(ARG_PARAM1);
+            // mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-
-
-
 
 
     @Override
@@ -92,19 +75,29 @@ public class FirstFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_first, container, false);
 
-        met1 = (EditText)view.findViewById(R.id.et1);
+        met1 = (EditText) view.findViewById(R.id.et1);
+        mValueTextView = (TextView) view.findViewById(R.id.tv1);
 
+
+        String second_param = getArguments() != null ? getArguments().getString("SECOND_PARAM", "Hello") : "hello";
+
+        mValueTextView.setText(second_param);
         //mParam1 = met1.getText().toString();
 
         mListener.changeTitle("First Fragment");
 
-        Button mbutton1 = (Button)view.findViewById(R.id.button1);
+        Button mbutton1 = (Button) view.findViewById(R.id.button1);
         mbutton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
-                mListener.replaceFragment(SecondFragment.newInstance());
+                SecondFragment secondFragment = SecondFragment.newInstance();
+                Bundle bundle = new Bundle();
+
+                bundle.putString("FIRST_PARAM", met1.getText().toString().length() > 0 ? met1.getText().toString() : null);
+                secondFragment.setArguments(bundle);
+                mListener.replaceFragment(secondFragment);
 
 //                if(met1.getText().toString().equals("")){
 //                    Toast.makeText(getActivity(), "User input value must be filled", Toast.LENGTH_LONG).show();
@@ -120,9 +113,6 @@ public class FirstFragment extends Fragment {
     }
 
 
-
-
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -135,15 +125,11 @@ public class FirstFragment extends Fragment {
     }
 
 
-
-
-
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
     }
-
 
 
 }
