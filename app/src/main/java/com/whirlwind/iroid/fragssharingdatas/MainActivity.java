@@ -7,8 +7,12 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import static com.whirlwind.iroid.fragssharingdatas.FirstFragment.mParam1;
+import static com.whirlwind.iroid.fragssharingdatas.FirstFragment.met1;
 
 public class MainActivity extends AppCompatActivity implements OnFragmentInteractionListener {
 
@@ -71,4 +75,13 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
     public void replaceFragment(Fragment fragment) {
         launchFragment(fragment);
     }
+
+    @Override
+    public void readText() {
+
+       // met1 = (EditText)findViewById(R.id.et1);
+        mParam1 =met1.getText().toString();
+
+    }
+
 }

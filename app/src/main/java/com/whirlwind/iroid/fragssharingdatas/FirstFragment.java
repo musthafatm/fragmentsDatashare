@@ -20,16 +20,16 @@ public class FirstFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
 
-    private EditText met1;
+    public static EditText met1;
     private String userData1;
 
 
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
+    public static String mParam1;
     private String mParam2;
 
-    private OnFragmentInteractionListener mListener;
+    private static OnFragmentInteractionListener mListener;
 
     public FirstFragment() {
         // Required empty public constructor
@@ -49,6 +49,10 @@ public class FirstFragment extends Fragment {
     public static FirstFragment newInstance() {
         FirstFragment fragment = new FirstFragment();
         Bundle args = new Bundle();
+
+        //String arg1 = mListener.readText(mParam1,met1);
+//        mListener.readText();
+        args.putString(ARG_PARAM1,mParam1);
 
         fragment.setArguments(args);
         return fragment;
@@ -73,7 +77,7 @@ public class FirstFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
+           // mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
@@ -89,6 +93,8 @@ public class FirstFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_first, container, false);
 
         met1 = (EditText)view.findViewById(R.id.et1);
+
+        //mParam1 = met1.getText().toString();
 
         mListener.changeTitle("First Fragment");
 

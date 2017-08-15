@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
+import android.widget.Toast;
 
 
 public class SecondFragment extends Fragment {
@@ -18,12 +18,14 @@ public class SecondFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
 
-    private String mParam1;
+    private String value1;
     private String mParam2;
 
 
 
-    private TextView mtv2;
+   // private
+
+     public static TextView mtv2;
 
 
     private OnFragmentInteractionListener mListener;
@@ -67,10 +69,10 @@ public class SecondFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+       // if (getArguments() != null) {
+            value1 = getArguments().getString(ARG_PARAM1, "Hello");
+            //mParam2 = getArguments().getString(ARG_PARAM2);
+       // }
 
     }
 
@@ -85,6 +87,11 @@ public class SecondFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_second, container, false);
         mtv2 = (TextView) view.findViewById(R.id.tv2);
 
+
+
+        Toast.makeText(getActivity(), "Data:" +value1, Toast.LENGTH_LONG).show();
+        mtv2.setText(value1);
+       // mListener.replaceText(dataFromFrag1);
         mListener.changeTitle("Second Fragment");
 
       view.findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
